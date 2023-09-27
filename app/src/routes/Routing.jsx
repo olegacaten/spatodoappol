@@ -7,7 +7,7 @@ function Routing() {
         <Routes>
 
                   <Route path={""} element={<Layout />}>
-                      <Route index element={<div>layout</div>}/>
+                      <Route index element={<div style={{width: "100%"}}>layout</div>}/>
                       <Route path={'/todos'} element={<div>todos</div>}/>
                       <Route path='*' element={<div>404</div>}/>          
                   </Route>
