@@ -5,14 +5,11 @@ function Routing() {
     return (
       <BrowserRouter>
         <Routes>
-
-                  <Route path={""} element={<Layout />}>
-                      <Route index element={<div>layout</div>}/>
-                      <Route path={'/todos'} element={<div>todos</div>}/>
-                      <Route path='*' element={<div>404</div>}/>          
-                  </Route>
-
-            
+          <Route path={""} element={<Layout />}>
+              <Route index element={<div>layout</div>}/>
+              <Route path={'/todos'} element={<div>todos</div>}/>
+              <Route path='*' element={<div>404</div>}/>          
+          </Route>   
         </Routes>
       </BrowserRouter>
     );
