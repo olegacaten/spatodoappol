@@ -4,15 +4,18 @@ import Header from "./header/Header"
 function Layout() {
   return (
     <>
-  <Header />
-    <div className="wrapper">
-        <div className="wrapper_sidebar">
-        <p>Menu</p>
-        </div>
-        <div className="pages">
-            <Outlet/>
-        </div>
-    </div>
+      <Header />
+      <div className="wrapper">
+          <div className="wrapper_sidebar">
+            <button className="wrapper-sidebar__button">
+              <span></span>
+            </button>
+            <p>Menu</p>
+          </div>
+          <div className="pages">
+              <Outlet/>
+          </div>
+      </div>
     </>
   );
 }

@@ -12,8 +12,9 @@
         font-style: normal;
         font-weight: 700;
     }
-    .header__search-bar {
+    .header__search-bar form {
         background-color: white;
+        border: none;
         display: flex;
         margin-left: 60px;
         width: 100%;
