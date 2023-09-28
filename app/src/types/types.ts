@@ -1,6 +1,6 @@
 export {}; 
 // TypeComment type
-type TypeComment = {
+export type TypeComment = {
     commentId: number;
     text: string;
     userId: number;
@@ -9,7 +9,7 @@ type TypeComment = {
   };
   
   // Task type
-  type Task = {
+  export type Task = {
     taskId: number;
     title: string;
     description: string;
@@ -24,7 +24,7 @@ type TypeComment = {
   };
   
   // Project type
-  type Project = {
+  export type Project = {
     projectId: number;
     title: string;
     tasks: Task[];

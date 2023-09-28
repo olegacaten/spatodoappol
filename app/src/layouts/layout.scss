@@ -2,14 +2,15 @@
 
 .wrapper{
     display: flex;
-    background-color: white;
-    padding: 16px;
+    flex: 1;
 }
 
-
 .pages {
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    flex: 1;
 }
 
 .wrapper_sidebar {
@@ -36,6 +37,33 @@
 
 .wrapper-sidebar__burger-menu {
     display: flex;
+    flex-direction: column;
     width: 0;
     transition-duration: .2s;
+    overflow: hidden;
+    background-color: white;
+}
+
+.wrapper-sidebar__burger-container {
+    margin-top: 20px;
+
+    a {
+        display: flex;
+        padding: 15px 15px;
+        box-sizing: border-box;
+
+        font-family: $secondary-font-stack;
+        color: black;
+    }
+
+    .wrapper-sidebar-burger-container__active-link {
+        border-left: 3px solid blue;
+        padding-left: 12.5px;
+        background-color: rgba(0, 0, 255, 0.037);
+    }
+}
+
+.wrapper-sidevar__active-burger {
+    width: 300px;
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.25);
 }

@@ -1,15 +1,25 @@
 import Popup from "./project_create/Project_Create"
+import { useId, useState } from 'react'
+import { Project } from "../../types/types";
 
- function Projects() {
+function Projects() {
+  const [projects, setProjects] = useState<Project[]>([])
+  let id = useId();
+
   return (
     <div className="projects-container">
-      <Popup/>
+      <Popup addProjects={(e: Project) => setProjects(prev => [...prev, e])}/>
 
       <div className="project-list">
-        {/* Display your projects here */}
-        <div className="project">Project 1</div>
-        <div className="project">Project 2</div>
-        {/* Add more project components */}
+        <ul>
+          {
+            projects.map((item, index) => (
+              <li key={id+index}>
+                <p>{item.title}</p>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
  );

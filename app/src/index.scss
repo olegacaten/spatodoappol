@@ -12,7 +12,19 @@ $secondary-font-stack: 'Open Sans', sans-serif;
 
 // Body styles
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex: 1;
+  margin: 0;
   background-color: $background-color;
   font-family: $primary-font-stack;
   color: $primary-text-color;
+}
+
+html {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
