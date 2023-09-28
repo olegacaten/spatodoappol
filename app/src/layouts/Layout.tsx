@@ -1,12 +1,12 @@
-import { Outlet } from "react-router-dom"; 
+import { Outlet } from "react-router-dom"
+import "./layout.scss"
+import Header from "./header/Header"
 function Layout() {
   return (
     <>
-    <div className="header">
-  <p>Header</p>
-    </div>
+  <Header />
     <div className="wrapper">
-        <div className="wrapper_leftmenu">
+        <div className="wrapper_sidebar">
         <p>Menu</p>
         </div>
         <div className="pages">

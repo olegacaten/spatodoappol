@@ -1,0 +1,18 @@
+
+// Variables for Colors
+$background-color: #f5f5f5 !important;              // White
+$primary-text-color: #333333 !important;            // Dark Gray
+$secondary-inactive-text-color: #999999 !important; // Lighter Gray (Inactive Text)
+$accent-color: #87CEEB !important;                  // Sky Blue
+$secondary-color: #98FB98 !important;               // Mint Green
+
+// Font Stacks
+$primary-font-stack: 'Roboto', sans-serif;
+$secondary-font-stack: 'Open Sans', sans-serif;
+
+// Body styles
+body {
+  background-color: $background-color;
+  font-family: $primary-font-stack;
+  color: $primary-text-color;
+}
