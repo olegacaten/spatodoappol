@@ -1,3 +1,4 @@
+export {}; 
 // TypeComment type
 type TypeComment = {
     commentId: number;
