@@ -1,13 +1,41 @@
+@import '../index.scss';
+
 .wrapper{
     display: flex;
-    
+    background-color: white;
+    padding: 16px;
 }
+
 
 .pages {
     margin-left: auto;
     margin-right: auto;
 }
 
-.wrapper-sidebar__button {
+.wrapper_sidebar {
+    position: relative;
+    display: flex;
+}
 
+.wrapper-sidebar__button {
+    background-color: transparent;
+    border: 1px solid transparent;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 0;
+    background: url('../../public/assets/header/burger_button.jpg') no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.wrapper-sidebar__active-button {
+    background-image: url('../../public/assets/header/close.jpg');
+    background-size: 50%;
+}
+
+.wrapper-sidebar__burger-menu {
+    display: flex;
+    width: 0;
+    transition-duration: .2s;
 }
