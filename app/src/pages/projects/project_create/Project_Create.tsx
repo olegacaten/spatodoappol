@@ -1,11 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useId} from 'react';
 import "./popup.scss"
 import { Project } from '../../../types/types';
+
+
 
 interface IProps {
   addProjects: (e: Project) => void;
 }
 
+
+  
 const Popup: FC<IProps> =({ addProjects }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [title, setTitle] = useState('');
@@ -31,50 +35,23 @@ const Popup: FC<IProps> =({ addProjects }) => {
     addProjects({
       projectId: 1,
       title: title,
-      tasks: [
-        {
-          taskId: 1,
-          title: "Task 1",
-          description: "Task description",
-          creationDate: new Date(),
-          timeSpent: 0,
-          endDate: null,
-          priority: "High",
-          attachments: [],
-          status: "Open",
-          subtasks: [],
-          comments: [
-            {
-              commentId: 1,
-              text: "This is a comment",
-              userId: 2,
-              timestamp: new Date(),
-              replies: [
-                {
-                  commentId: 2,
-                  text: "Reply to comment 1",
-                  userId: 3,
-                  timestamp: new Date(),
-                  replies: [],
-                },
-              ],
-            },
-          ],
-        },
-      ]
+      description: description,
+      tasks: []
     })
+
 
     closePopup();
   };
 
   return (
-    <div>
-      <button onClick={openPopup}>Open Popup</button>
-      
+    <div className='projectcreate'>
+      <div className="btn_create" >
+      <button onClick={openPopup}>Create New Project</button>
+      </div>
       {isPopupOpen && (
         <div className="popup">
           <div className="popup-content">
-            <h2>Add Title and Description</h2>
+            <h2>Create new project</h2>
             <input
               type="text"
               placeholder="Title"

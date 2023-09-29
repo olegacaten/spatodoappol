@@ -6,9 +6,7 @@
 }
 
 .pages {
-    display: flex;
-    justify-content: center;
-    max-width: 800px;
+    min-width: 200px;
     margin: 0 auto;
     flex: 1;
 }
@@ -16,6 +14,7 @@
 .wrapper_sidebar {
     position: relative;
     display: flex;
+
 }
 
 .wrapper-sidebar__button {
@@ -33,20 +32,23 @@
 .wrapper-sidebar__active-button {
     background-image: url('../../public/assets/header/close.jpg');
     background-size: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .wrapper-sidebar__burger-menu {
     display: flex;
     flex-direction: column;
     width: 0;
-    transition-duration: .2s;
     overflow: hidden;
+    transition: width 0.5s ease-in-out;  
     background-color: white;
 }
 
 .wrapper-sidebar__burger-container {
     margin-top: 20px;
-
+    padding: 8px 16px;
     a {
         display: flex;
         padding: 15px 15px;
@@ -64,6 +66,6 @@
 }
 
 .wrapper-sidevar__active-burger {
-    width: 300px;
+    min-width: 200px;
     box-shadow: 2px 4px 4px rgba(0,0,0,0.25);
 }

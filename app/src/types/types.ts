@@ -27,6 +27,7 @@ export type TypeComment = {
   export type Project = {
     projectId: number;
     title: string;
+    description: string;
     tasks: Task[];
   };
   
@@ -34,6 +35,7 @@ export type TypeComment = {
   const project: Project = {
     projectId: 1,
     title: "Sample Project",
+    description: "Its todo list project",
     tasks: [
       {
         taskId: 1,

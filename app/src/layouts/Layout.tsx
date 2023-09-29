@@ -11,10 +11,8 @@ function Layout() {
       <div className="wrapper">
           <div className="wrapper_sidebar">
             <div className={`wrapper-sidebar__burger-menu ${isActiveBurger ? 'wrapper-sidevar__active-burger' : ''}`}>
-              <ul className="wrapper-sidebar__burger-container">
-                <li><NavLink className={({isActive}) => isActive ? 'wrapper-sidebar-burger-container__active-link' : ''} to={'/projects'}>Projects</NavLink></li>
-                <li><NavLink className={({isActive}) => isActive ? 'wrapper-sidebar-burger-container__active-link' : ''} to={'/todo'}>Todo list</NavLink></li>
-                <li><NavLink className={({isActive}) => isActive ? 'wrapper-sidebar-burger-container__active-link' : ''} to={'/jopa'}>F</NavLink></li>
+              <ul className="wrapper-sidebar__burger-container ">
+                <li><NavLink className={({isActive}) => isActive ? 'wrapper-sidebar-burger-container__active-link' : ''} to={'/'}>Projects</NavLink></li>
               </ul>
             </div>
             <button onClick={() => setIsActiveBurger(prev => !prev)} className={`wrapper-sidebar__button ${isActiveBurger ? 'wrapper-sidebar__active-button' : ''}`}></button>

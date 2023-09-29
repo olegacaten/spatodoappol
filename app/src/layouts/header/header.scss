@@ -15,9 +15,8 @@
     .header__search-bar form {
         background-color: white;
         border: none;
-        display: flex;
-        margin-left: 60px;
-        width: 100%;
+        margin: 8px 16px;
+        flex:1;
         max-width: 400px;
     }
     .header__search-bar input:focus,.header__search-bar textarea:focus{

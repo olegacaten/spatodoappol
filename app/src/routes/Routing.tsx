@@ -6,7 +6,7 @@ function Routing() {
       <BrowserRouter>
         <Routes>
           <Route path={"/"} element={<Layout />}>
-              <Route path='projects' element={<Projects/>}/>
+              <Route index element={<Projects/>}/>
               <Route path={'/todos'} element={<div>todos</div>}/>
               <Route path='*' element={<div>404</div>}/>          
           </Route>   
