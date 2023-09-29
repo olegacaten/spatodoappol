@@ -14,6 +14,8 @@ const Popup: FC<IProps> =({ addProjects }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const objectString = localStorage.getItem('ObjectsKey')|| '[]';
+  const objectFromLocalStorage = JSON.parse(objectString);
 
   const openPopup = () => {
     setPopupOpen(true);
@@ -27,13 +29,13 @@ const Popup: FC<IProps> =({ addProjects }) => {
     setTitle(e.target.value);
   };
 
-  const handleDescriptionChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+  const handleDescriptionChange = (e: { target: { value: React.SetStateAction<string>;   }; }) => {
     setDescription(e.target.value);
   };
 
   const handleCreate = () => {
     addProjects({
-      projectId: 1,
+      projectId: objectFromLocalStorage.at(-1) ? objectFromLocalStorage.at(-1).projectId+1 : 0,
       title: title,
       description: description,
       tasks: []

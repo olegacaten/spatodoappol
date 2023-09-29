@@ -18,7 +18,6 @@ function Projects() {
     localStorage.setItem('ObjectsKey', objectString);
   }, [projects]);
 
-
   
   
   return (
@@ -29,7 +28,7 @@ function Projects() {
         <ul>
           {
             projects.map((item, index) => (
-              <li key={id+index}>
+              <li key={item.projectId}>
                   <Link to={`/project/${item.projectId}`}>id:{item.projectId}title:{item.title} des:{item.description}</Link>
               </li>
             ))
