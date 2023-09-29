@@ -6,11 +6,12 @@ import { Project } from '../../../types/types';
 
 interface IProps {
   addProjects: (e: Project) => void;
+  IdProp:number;
 }
 
 
   
-const Popup: FC<IProps> =({ addProjects }) => {
+const Popup: FC<IProps> =({ addProjects, IdProp }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -35,7 +36,7 @@ const Popup: FC<IProps> =({ addProjects }) => {
 
   const handleCreate = () => {
     addProjects({
-      projectId: objectFromLocalStorage.at(-1) ? objectFromLocalStorage.at(-1).projectId+1 : 0,
+      projectId: objectFromLocalStorage ? objectFromLocalStorage.at(-1).projectId+1 : 0,
       title: title,
       description: description,
       tasks: []
