@@ -19,8 +19,8 @@ export type TypeComment = {
     priority: 'Low'|'Middle'|'High';
     attachments: string[];
     status: string;
-    subtasks: Task[];
-    comments: TypeComment[]; // Use the TypeComment type here
+    subtasks?: Task[];
+    comments: TypeComment[] | []; // Use the TypeComment type here
   };
   
   // Project type

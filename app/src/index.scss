@@ -20,6 +20,7 @@ body {
   background-color: $background-color;
   font-family: $primary-font-stack;
   color: $primary-text-color;
+  overflow: auto;
 }
 
 html {
