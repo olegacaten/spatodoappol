@@ -6,11 +6,12 @@ import { Project } from '../../../types/types';
 
 interface IProps {
   addProjects: (e: Project) => void;
+  IdProp:number;
 }
 
 
   
-const Popup: FC<IProps> =({ addProjects }) => {
+const Popup: FC<IProps> =({ addProjects, IdProp }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -33,7 +34,7 @@ const Popup: FC<IProps> =({ addProjects }) => {
 
   const handleCreate = () => {
     addProjects({
-      projectId: 1,
+      projectId: IdProp,
       title: title,
       description: description,
       tasks: []

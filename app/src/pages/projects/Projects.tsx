@@ -8,14 +8,24 @@ function Projects() {
   let highestId:number;
   const objectString = localStorage.getItem('ObjectsKey')|| '[]';
   const objectFromLocalStorage = JSON.parse(objectString);
+  
+  let NumberStorage = Number(localStorage.getItem('Number')|| 1);
+  highestId  = NumberStorage;
 
   const [projects, setProjects] = useState<Project[]>(objectFromLocalStorage)
+  const [id_project, increment_id] = useState<number>(highestId)
   let id = useId();
   
 
   useEffect(() => {
     const objectString = JSON.stringify(projects);
     localStorage.setItem('ObjectsKey', objectString);
+    
+    increment_id(id_project+1);
+    NumberStorage = id_project;
+    localStorage.setItem('Number', NumberStorage.toString());
+    console.log(`highest number is : ${id_project}`);
+
   }, [projects]);
 
 
@@ -23,7 +33,7 @@ function Projects() {
   
   return (
     <div className="projects-container">
-      <Popup addProjects={(e: Project) => setProjects(prev => [...prev, e])} />
+      <Popup addProjects={(e: Project) => setProjects(prev => [...prev, e])} IdProp = {highestId}/>
 
       <div className="project-list">
         <ul>
