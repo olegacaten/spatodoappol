@@ -13,6 +13,13 @@ const ProjectPage = () => {
     <div className='project-page'>
         <p className='project-page__title'>{project.title}</p>
         <p className='project-page__description'>{project.description}</p>
+        <ul>
+            {
+                project.tasks.map(item => (
+                    <li>{item.title}</li>
+                ))
+            }
+        </ul>
     </div>
   )
 }
