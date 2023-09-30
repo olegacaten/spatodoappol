@@ -5,9 +5,21 @@ import './ProjectAddTask.scss';
 interface PropsTaskAdd{
   Project_Id_add:number;
 }
+const objectStringcounter = localStorage.getItem('counter');
+const objectFromLocalStoragecounter = JSON.parse(objectStringcounter);
+
+let counter = 0; // Initialize the counter outside the function
+
+function incrementCounter() {
+  counter++; // Increment the counter by 1
+  console.log(`Counter is now ${counter}`);
+}
+
+
+
 const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
   const [newTask, setNewTask] = useState<Task>({
-    taskId: 0,
+    taskId: counter,
     title: '',
     description: '',
     creationDate: new Date(),
@@ -23,8 +35,9 @@ const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
   const [isAddTaskPopupOpen, setAddTaskPopupOpen] = useState(false);
 
   const handleAddTask = () => {
+    incrementCounter() ;
     const storedProjects = JSON.parse(localStorage.getItem('ObjectsKey') || '[]');
-    const projectId = Project_Id_add;
+    const projectId = Project_Id_add.Project_Id_add;
     const projectIndex = storedProjects.findIndex((project: any) => project.projectId === projectId);
 
     if (projectIndex !== -1) {
