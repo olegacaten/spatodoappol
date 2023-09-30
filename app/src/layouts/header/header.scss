@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     padding: 8px 16px;
+    z-index: 11;
     .header__logo{
         color: $background-color;
         font-family: $secondary-font-stack;

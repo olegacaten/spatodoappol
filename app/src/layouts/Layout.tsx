@@ -17,7 +17,7 @@ function Layout() {
             </div>
             <button onClick={() => setIsActiveBurger(prev => !prev)} className={`wrapper-sidebar__button ${isActiveBurger ? 'wrapper-sidebar__active-button' : ''}`}></button>
           </div>
-          <div className="pages">
+          <div className={`pages ${isActiveBurger ? 'overlay' : ''}`}>
               <Outlet/>
           </div>
       </div>

@@ -6,16 +6,15 @@
 }
 
 .pages {
-    min-width: 200px;
-    max-width: 800px;
-    margin: 0 auto;
+    min-width: 150px;
     flex: 1;
+    padding: 8px 16px;
 }
 
 .wrapper_sidebar {
     position: relative;
     display: flex;
-
+    z-index: 11;
 }
 
 .wrapper-sidebar__button {
@@ -25,17 +24,18 @@
     height: 30px;
     cursor: pointer;
     padding: 0;
-    background: url('../../public/assets/header/burger_button.jpg') no-repeat;
+    background: url('../../public/assets/header/hamburger-menu.svg') no-repeat;
     background-size: 100%;
     background-position: center;
 }
 
 .wrapper-sidebar__active-button {
-    background-image: url('../../public/assets/header/close.jpg');
-    background-size: 50%;
+    background-image: url('../../public/assets/header/close.svg');
+    background-size: 80%;
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 12;
 }
 
 .wrapper-sidebar__burger-menu {
@@ -69,4 +69,23 @@
 .wrapper-sidevar__active-burger {
     min-width: 200px;
     box-shadow: 2px 4px 4px rgba(0,0,0,0.25);
+    z-index: 10;
+}
+
+
+
+@media (max-width: 768px) {
+    .pages {
+    flex: 1 1;
+    position: relative;
+    }
+    .pages {
+        &.overlay{
+            margin-left: -170px;
+            opacity: 0.7;
+            pointer-events: none;
+            filter: brightness(0.6); 
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    }
 }
