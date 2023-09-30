@@ -14,7 +14,6 @@ function Projects() {
 
   const [projects, setProjects] = useState<Project[]>(objectFromLocalStorage)
   const [id_project, increment_id] = useState<number>(highestId)
-  let id = useId();
   
 
   useEffect(() => {
@@ -32,7 +31,7 @@ function Projects() {
   
   return (
     <div className="projects-container">
-      <Popup addProjects={(e: Project) => setProjects(prev => [...prev, e])} IdProp = {highestId}/>
+      <Popup addProjects={(e: Project) => setProjects(prev => [...prev, e])}/>
 
       <div className="project-list">
         <ul>
