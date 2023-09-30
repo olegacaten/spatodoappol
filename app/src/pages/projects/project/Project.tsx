@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
+
+import ProjectAddTask from "./project_add_task/ProjectAddTask"
 import { Project, Task } from '../../../types/types';
-import './Project.scss'
+import './Project.scss';
 import { Reorder, AnimatePresence } from 'framer-motion';
 
 const variants = {
@@ -21,10 +23,12 @@ const variants = {
 const ProjectPage = () => {
     const projects: Project[] = JSON.parse(localStorage.getItem('ObjectsKey') as string);
     let storage: Project[] = JSON.parse(localStorage.getItem('ObjectsKey') as string);
-    console.log(storage)
+  
+
     const { id }  = useParams();
     const project: Project = projects.filter(item => item.projectId === parseInt(id as string))[0];
     const [tasks, setTask] = useState<Task[]>(project.tasks);  
+
 
     const removeF = (e: React.MouseEvent<HTMLDivElement>) => {
         const id = parseInt(e.currentTarget.id);
@@ -36,10 +40,13 @@ const ProjectPage = () => {
     }, [tasks])
 
   return (
+    
     <div className='project-page'>
         <p className='project-page__title'>{project.title}</p>
         <p className='project-page__description'>{project.description}</p>
         <div className='project-page__pillars'>
+
+            
             <div className='project-page__pillar project-page__queue'>
                 <Reorder.Group as="ul" axis='y' values={tasks} onReorder={setTask}>
                     <AnimatePresence>

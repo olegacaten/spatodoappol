@@ -1,4 +1,5 @@
 import './header.scss'
+import ClearLocalStorageButton from '../btns/clearlocalstorage/ClearLocalStorageButton';
 import Input from './input/Input';
 function Header() {
   return (
@@ -10,6 +11,7 @@ function Header() {
               <Input />
             </form>
         </div>
+        <ClearLocalStorageButton/>
     </div>
 
   );
