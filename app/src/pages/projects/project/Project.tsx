@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Project, Task } from '../../../types/types';
 import './Project.scss';
 import { Reorder, AnimatePresence } from 'framer-motion';
+import ProjectAddTask from './project_add_task/ProjectAddTask';
 
 const variants = {
     initial: {
@@ -31,6 +32,7 @@ const ProjectPage = () => {
     }
 
     useEffect(() => {
+        console.log(tasks);
         localStorage.setItem('ObjectsKey', JSON.stringify([...storage.filter(item => item.projectId !== project.projectId), {...project, tasks: tasks}]))
     }, [tasks])
 
@@ -39,7 +41,7 @@ const ProjectPage = () => {
         <p className='project-page__title'> ID: {project.projectId} {project.title}</p>
         <p className='project-page__description'>{project.description}</p>
         <div className='project-page__pillars'>
-        <ProjectAddTask Project_Id_add = {project.projectId} />
+        <ProjectAddTask setTasks={(e) => setTask(prev => [...prev, e])} Project_Id_add={project.projectId}/>
            
             <div className='project-page__pillar project-page__queue'>
                 <Reorder.Group  as="ul" axis='y' values={tasks} onReorder={setTask}>
@@ -48,15 +50,7 @@ const ProjectPage = () => {
                             tasks.map(item => (
                                 <Reorder.Item {...variants} id={`${item.taskId}`} onDoubleClick={(e: React.MouseEvent<HTMLDivElement>) => removeF(e)} whileDrag={{scale: 1.02}} key={item.taskId} value={item}>
                                     <div className='prokect-page-pillar__task'>
-                                        <p key={item.taskId}>taskId:{item.taskId}</p>
-                                        <p key={item.title}>title:{item.title}</p>
-                                        <p key={item.description}> description :{item.description}</p>
-                                        <p key={item.creationDate.toString()}> creationDate :{item.creationDate.toString()}</p>
-                                        <p key={item.timeSpent}>{item.timeSpent}</p>
-                                        <p key={item.endDate}> endDate:{item.endDate}</p>
-                                        <p key={item.priority}> priority:{item.priority}</p>
-                                        <p key={item.status}>status:{item.status}</p>
-                                    
+                                        <p key={item.title}>{item.title}</p>
                                     </div>
                                 </Reorder.Item>
                             ))

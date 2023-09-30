@@ -1,18 +1,22 @@
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useEffect } from 'react';
 import { Task } from '../../../../types/types';
 import './ProjectAddTask.scss';
 
 interface PropsTaskAdd{
   Project_Id_add:number;
+  setTasks: (e: Task) => void;
 }
-const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
+
+const ProjectAddTask: React.FC<PropsTaskAdd> = ({Project_Id_add, setTasks}) => {
+  const objectString = localStorage.getItem('ObjectsKey')|| '[]';
+  const objectFromLocalStorage = JSON.parse(objectString);
   const [newTask, setNewTask] = useState<Task>({
-    taskId: 0,
+    taskId: 1,
     title: '',
     description: '',
     creationDate: new Date(),
     timeSpent: 0,
-    endDate: '', // Initialize as an empty string
+    endDate: '',
     priority: 'Low',
     attachments: [],
     status: 'Open',
@@ -26,8 +30,10 @@ const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
     const storedProjects = JSON.parse(localStorage.getItem('ObjectsKey') || '[]');
     const projectId = Project_Id_add;
     const projectIndex = storedProjects.findIndex((project: any) => project.projectId === projectId);
+    newTask.taskId = 1+Math.floor(Math.random()*10000);
 
     if (projectIndex !== -1) {
+      setTasks(newTask);
       storedProjects[projectIndex].tasks.push(newTask);
       localStorage.setItem('ObjectsKey', JSON.stringify(storedProjects));
       setAddTaskPopupOpen(false);
@@ -56,7 +62,7 @@ const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
                 type="text"
                 placeholder="Title"
                 value={newTask.title}
-                onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
+                onChange={(e) => setNewTask({ ...newTask, title: e.target.value})}
               />
               <input
                 type="text"
@@ -77,7 +83,7 @@ const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
                   }}
                 />
               </div>
-              <button type="button" onClick={handleAddTask}>
+              <button type="button" onClick={() => handleAddTask()}>
                 Save Task
               </button>
             </form>

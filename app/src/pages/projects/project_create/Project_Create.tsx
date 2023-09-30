@@ -39,32 +39,7 @@ const Popup: FC<IProps> =({ addProjects }) => {
       projectId: objectFromLocalStorage.at(-1) ? objectFromLocalStorage.at(-1).projectId+1 : 0,
       title: title,
       description: description,
-      tasks: [
-        {
-          taskId: 2,
-          title: 'title task',
-          description: 'description task',
-          creationDate: new Date(),
-          timeSpent: 4,
-          endDate: '',
-          priority: 'Low',
-          attachments: [''],
-          status: 'queue',
-          comments: []
-        },
-        {
-          taskId: 3,
-          title: 'title task',
-          description: 'description task',
-          creationDate: new Date(),
-          timeSpent: 4,
-          endDate: null,
-          priority: 'Low',
-          attachments: [''],
-          status: 'queue',
-          comments: []
-        },
-      ]
+      tasks: []
     })
 
 
