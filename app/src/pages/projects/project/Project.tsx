@@ -20,6 +20,8 @@ const variants = {
 
 const ProjectPage = () => {
     const projects: Project[] = JSON.parse(localStorage.getItem('ObjectsKey') as string);
+    let storage: Project[] = JSON.parse(localStorage.getItem('ObjectsKey') as string);
+    console.log(storage)
     const { id }  = useParams();
     const project: Project = projects.filter(item => item.projectId === parseInt(id as string))[0];
     const [tasks, setTask] = useState<Task[]>(project.tasks);  
@@ -28,6 +30,10 @@ const ProjectPage = () => {
         const id = parseInt(e.currentTarget.id);
         setTask(prev => prev.filter(item => item.taskId !== id));
     }
+
+    useEffect(() => {
+        localStorage.setItem('ObjectsKey', JSON.stringify([...storage.filter(item => item.projectId !== project.projectId), {...project, tasks: tasks}]))
+    }, [tasks])
 
   return (
     <div className='project-page'>
@@ -41,7 +47,7 @@ const ProjectPage = () => {
                             tasks.map(item => (
                                 <Reorder.Item {...variants} id={`${item.taskId}`} onDoubleClick={(e: React.MouseEvent<HTMLDivElement>) => removeF(e)} whileDrag={{scale: 1.02}} key={item.taskId} value={item}>
                                     <div className='prokect-page-pillar__task'>
-                                        <p key={item.taskId}>{item.title}</p>
+                                        <p key={item.taskId}>{item.taskId}</p>
                                     </div>
                                 </Reorder.Item>
                             ))
