@@ -15,7 +15,7 @@ export type TypeComment = {
     description: string;
     creationDate: Date;
     timeSpent: number;
-    endDate: Date | null;
+    endDate: string;
     priority: 'Low'|'Middle'|'High';
     attachments: string[];
     status: string;
@@ -30,43 +30,3 @@ export type TypeComment = {
     description: string;
     tasks: Task[];
   };
-  
-  // Example usage:
-  const project: Project = {
-    projectId: 1,
-    title: "Sample Project",
-    description: "Its todo list project",
-    tasks: [
-      {
-        taskId: 1,
-        title: "Task 1",
-        description: "Task description",
-        creationDate: new Date(),
-        timeSpent: 0,
-        endDate: null,
-        priority: "High",
-        attachments: [],
-        status: "Open",
-        subtasks: [],
-        comments: [
-          {
-            commentId: 1,
-            text: "This is a comment",
-            userId: 2,
-            timestamp: new Date(),
-            replies: [
-              {
-                commentId: 2,
-                text: "Reply to comment 1",
-                userId: 3,
-                timestamp: new Date(),
-                replies: [],
-              },
-            ],
-          },
-        ],
-      },
-      // Add more tasks here
-    ],
-  };
-  

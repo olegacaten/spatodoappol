@@ -46,7 +46,7 @@ const Popup: FC<IProps> =({ addProjects }) => {
           description: 'description task',
           creationDate: new Date(),
           timeSpent: 4,
-          endDate: null,
+          endDate: '',
           priority: 'Low',
           attachments: [''],
           status: 'queue',
