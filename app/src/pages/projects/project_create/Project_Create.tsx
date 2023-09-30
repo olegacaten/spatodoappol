@@ -36,7 +36,7 @@ const Popup: FC<IProps> =({ addProjects, IdProp }) => {
 
   const handleCreate = () => {
     addProjects({
-      projectId: objectFromLocalStorage ? objectFromLocalStorage.at(-1).projectId+1 : 0,
+      projectId: objectFromLocalStorage.at(-1) ? objectFromLocalStorage.at(-1).projectId+1 : 0,
       title: title,
       description: description,
       tasks: [
