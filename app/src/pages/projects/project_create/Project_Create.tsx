@@ -51,8 +51,19 @@ const Popup: FC<IProps> =({ addProjects }) => {
           attachments: [''],
           status: 'queue',
           comments: []
-        }
-
+        },
+        {
+          taskId: 3,
+          title: 'title task',
+          description: 'description task',
+          creationDate: new Date(),
+          timeSpent: 4,
+          endDate: null,
+          priority: 'Low',
+          attachments: [''],
+          status: 'queue',
+          comments: []
+        },
       ]
     })
 
