@@ -1,0 +1,21 @@
+.info-button-container {
+    position: relative;
+  }
+  
+  .info-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white; 
+    padding: 8px 16px;
+    border: none; 
+    cursor: pointer; 
+    border-radius: 4px;
+    &:hover{
+        background-color: darken(#007bff, 10%);
+    } 
+  }
+  
+  .info-icon {
+    font-size: 1.2rem; 
+  }
+  

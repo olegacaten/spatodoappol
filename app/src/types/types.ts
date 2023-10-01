@@ -18,7 +18,8 @@ export type TypeComment = {
     endDate: string;
     priority: 'Low'|'Middle'|'High';
     attachments: string[];
-    status: string;
+    previousStatus: 'QUEUE'|'DEVELOPMENT'|'DONE';
+    status: 'QUEUE'|'DEVELOPMENT'|'DONE';
     subtasks?: Task[];
     comments: TypeComment[] | []; // Use the TypeComment type here
   };

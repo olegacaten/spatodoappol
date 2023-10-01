@@ -1,6 +1,3 @@
-.project-page {
-    // text-align: center;
-}
 
 .project-page__pillars {
     display: flex;
@@ -14,20 +11,23 @@
     
     ul {
         display: flex;
-        min-height: 350px;
         flex-direction: column;
         gap: 5px;
     }
     // min-height: 350px;
 }
 
-.prokect-page-pillar__task {
+.project-page-pillar__task {
     width: 100%;
     border: 1px solid rgba(128, 128, 128, 0.658);
     padding: 5px;
     border-radius: 5px;
     background-color: white;
     min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 
@@ -43,3 +43,5 @@
     color: #666; /* Adjust the text color as needed */
 
 }
+
+

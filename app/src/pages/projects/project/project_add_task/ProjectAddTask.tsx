@@ -1,46 +1,45 @@
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useEffect } from 'react';
 import { Task } from '../../../../types/types';
 import './ProjectAddTask.scss';
 
 interface PropsTaskAdd{
   Project_Id_add:number;
-}
-const objectStringcounter = localStorage.getItem('counter');
-const objectFromLocalStoragecounter = JSON.parse(objectStringcounter);
-
-let counter = 0; // Initialize the counter outside the function
-
-function incrementCounter() {
-  counter++; // Increment the counter by 1
-  console.log(`Counter is now ${counter}`);
+  setTasks: (e: Task) => void;
+  maxTaskId_prop:number;
 }
 
-
-
-const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
+const ProjectAddTask: React.FC<PropsTaskAdd> = ({Project_Id_add, setTasks, maxTaskId_prop}) => {
+  const objectString = localStorage.getItem('ObjectsKey')|| '[]';
+  const objectFromLocalStorage = JSON.parse(objectString);
+  
   const [newTask, setNewTask] = useState<Task>({
-    taskId: counter,
+    taskId: 1,
     title: '',
     description: '',
     creationDate: new Date(),
     timeSpent: 0,
-    endDate: '', // Initialize as an empty string
+    endDate: '',
     priority: 'Low',
     attachments: [],
-    status: 'Open',
+    previousStatus: 'QUEUE',
+    status:'QUEUE',
     subtasks: [],
     comments: [],
   });
 
+
+
+
   const [isAddTaskPopupOpen, setAddTaskPopupOpen] = useState(false);
 
   const handleAddTask = () => {
-    incrementCounter() ;
     const storedProjects = JSON.parse(localStorage.getItem('ObjectsKey') || '[]');
-    const projectId = Project_Id_add.Project_Id_add;
+    const projectId = Project_Id_add;
     const projectIndex = storedProjects.findIndex((project: any) => project.projectId === projectId);
+    newTask.taskId = maxTaskId_prop+1;
 
     if (projectIndex !== -1) {
+      setTasks(newTask);
       storedProjects[projectIndex].tasks.push(newTask);
       localStorage.setItem('ObjectsKey', JSON.stringify(storedProjects));
       setAddTaskPopupOpen(false);
@@ -58,8 +57,9 @@ const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
 
   return (
     <div>
-      <button onClick={() => setAddTaskPopupOpen(true)}>Add Task</button>
-
+      <div className="btn_create">
+      <button  onClick={() => setAddTaskPopupOpen(true)}>Add Task</button>
+      </div>
       {isAddTaskPopupOpen && (
         <div className="popup">
           <div className="popup-content">
@@ -69,7 +69,7 @@ const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
                 type="text"
                 placeholder="Title"
                 value={newTask.title}
-                onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
+                onChange={(e) => setNewTask({ ...newTask, title: e.target.value})}
               />
               <input
                 type="text"
@@ -90,11 +90,12 @@ const ProjectAddTask: React.FC<PropsTaskAdd> = (Project_Id_add) => {
                   }}
                 />
               </div>
-              <button type="button" onClick={handleAddTask}>
+              <button type="button" onClick={() => handleAddTask()}>
                 Save Task
               </button>
-            </form>
+            
             <button onClick={() => setAddTaskPopupOpen(false)}>Cancel</button>
+            </form>
           </div>
         </div>
       )}
