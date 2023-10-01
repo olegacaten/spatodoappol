@@ -42,45 +42,48 @@ const ProjectPage = () => {
   const handleDragStart = (item: Task) => {
     setDraggedTask(item);
   };
-  function isTouchEvent(event: MouseEvent | TouchEvent): event is TouchEvent {
-    return "touches" in event;
-  }
+
   
+  const handleDragEnd = () => {
+    if (draggedTask) {
+      // Determine the source and destination columns
+      const sourceStatus = draggedTask.status;
+      const destinationStatus =
+        draggedTask.status === "QUEUE" ? "DEVELOPMENT" : "DONE";
   
-  const handleDragEnd = (event: MouseEvent | TouchEvent, info: any) => {
-  if (draggedTask) {
-    const sourceStatus = draggedTask.status;
-
-    const statusOrder: ("QUEUE" | "DEVELOPMENT" | "DONE")[] = ["QUEUE", "DEVELOPMENT", "DONE"];
-
-    const currentIndex = statusOrder.indexOf(sourceStatus);
-
-    const nextIndex = (currentIndex + 1) % statusOrder.length;
-
-    const destinationStatus: "QUEUE" | "DEVELOPMENT" | "DONE" = statusOrder[nextIndex];
-
-    const bufferZoneHeight = 20;
-
-    const cursorY = isTouchEvent(event) ? event.touches[0].clientY : event.clientY;
-
-    const isInBufferZone = cursorY >= window.innerHeight - bufferZoneHeight;
-
-    const updatedTask: Task = { ...draggedTask, status: destinationStatus };
-
-    if (sourceStatus !== destinationStatus && !isInBufferZone) {
-      const updatedTasks: Task[] = tasks.filter(
-        (task) => task.taskId !== draggedTask.taskId
-      );
-      setTask([...updatedTasks, updatedTask]);
-    } else {
-      const updatedTasks: Task[] = tasks.map((task) =>
-        task.taskId === draggedTask.taskId ? updatedTask : task
-      );
-      setTask(updatedTasks);
+      // Calculate the task's position within the current group
+      const taskIndex = tasks.findIndex((task) => task.taskId === draggedTask.taskId);
+      const taskElement = document.getElementById(`${draggedTask.taskId}`);
+      const taskRect = taskElement?.getBoundingClientRect();
+      
+      // Calculate the position of the group
+      const groupElement = document.querySelector(".project-page__queue"); // Adjust the selector for each group
+      const groupRect = groupElement?.getBoundingClientRect();
+  
+      // Check if the task was dragged out of the group's zone
+      if (taskRect && groupRect && (taskRect.bottom < groupRect.top || taskRect.top > groupRect.bottom)) {
+        // Update the status of the dragged task
+        const updatedTask: Task = { ...draggedTask, status: destinationStatus };
+  
+        // Check if the task was moved to a different group
+        if (sourceStatus !== destinationStatus) {
+          const updatedTasks: Task[] = tasks.filter(
+            (task) => task.taskId !== draggedTask.taskId
+          );
+          setTask([...updatedTasks, updatedTask]);
+        } else {
+          // If the task is still within the same group, reorder it
+          const updatedTasks: Task[] = tasks.map((task) =>
+            task.taskId === draggedTask.taskId ? updatedTask : task
+          );
+          setTask(updatedTasks);
+        }
+      }
+      
+      setDraggedTask(null);
     }
-    setDraggedTask(null);
-  }
-};
+  };
+  
 
   
 
@@ -168,7 +171,7 @@ const ProjectPage = () => {
                     {...variants}
                     id={`${item.taskId}`}
                     onDragStart={() => handleDragStart(item)}
-                    onDragEnd={(event, info) => handleDragEnd(event, info)}
+                    onDragEnd={() => handleDragEnd()}
 
 
                     whileDrag={{ scale: 1}}
@@ -216,7 +219,7 @@ const ProjectPage = () => {
                     {...variants}
                     id={`${item.taskId}`}
                     onDragStart={() => handleDragStart(item)}
-                    onDragEnd={(event, info) => handleDragEnd(event, info)}
+                    onDragEnd={() => handleDragEnd()}
 
                     whileDrag={{ scale: 1}}
                     key={item.taskId}
@@ -269,7 +272,7 @@ const ProjectPage = () => {
                     {...variants}
                     id={`${item.taskId}`}
                     onDragStart={() => handleDragStart(item)}
-                    onDragEnd={(event, info) => handleDragEnd(event, info)}
+                    onDragEnd={() => handleDragEnd()}
 
                     whileDrag={{ scale: 1}}
                     key={item.taskId}
