@@ -24,7 +24,52 @@ const ProjectAddTask: React.FC<PropsTaskAdd> = ({Project_Id_add, setTasks, maxTa
     previousStatus: 'QUEUE',
     status:'QUEUE',
     subtasks: [],
-    comments: [],
+    comments: [
+      {
+        commentId: 1,
+        text: 'New Comment',
+        userId: 1,
+        timestamp: new Date(),
+        replies: [],
+      },
+      {
+        commentId: 2,
+        text: '1 Comment',
+        userId: 1,
+        timestamp: new Date(),
+        replies: [
+          {
+            commentId: 1,
+            text: '2 Comment',
+            userId: 1,
+            timestamp: new Date(),
+            replies: []
+          },
+          {
+            commentId: 2,
+            text: '3 Comment',
+            userId: 1,
+            timestamp: new Date(),
+            replies: [
+              {
+                commentId: 1,
+                text: '4 Comment',
+                userId: 1,
+                timestamp: new Date(),
+                replies: []
+              }
+            ]
+          }
+        ],
+      },
+      {
+        commentId: 3,
+        text: '5 Comment',
+        userId: 1,
+        timestamp: new Date(),
+        replies: [],
+      },
+    ],
   });
 
 

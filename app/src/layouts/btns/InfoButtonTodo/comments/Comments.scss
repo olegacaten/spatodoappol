@@ -1,0 +1,15 @@
+.popup-content__comments {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.comment {
+    text-align: start;
+}
+
+.replies-comment {
+    padding-left: 5px;
+}

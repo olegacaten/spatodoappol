@@ -57,7 +57,7 @@ const ProjectPage = () => {
       const taskRect = taskElement?.getBoundingClientRect();
       
       // Calculate the position of the group
-      const groupElement = document.querySelector(".project-page__queue"); // Adjust the selector for each group
+      const groupElement = document.querySelector(".project-page__pillar"); // Adjust the selector for each group
       const groupRect = groupElement?.getBoundingClientRect();
   
       // Check if the task was dragged out of the group's zone

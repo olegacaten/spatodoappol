@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Task } from "../../../types/types";
 import './InfoButtonTodo.scss';
+import Comments from './comments/Comments';
 
 type InfoButtonProps = {
   task: Task;
@@ -72,11 +73,12 @@ const InfoButtonTodo: React.FC<InfoButtonProps> = ({ task, stateofopentodo }) =>
             <p><strong>Title:</strong> {task.title}</p>
             <p><strong>Description: </strong>{task.description}</p>
             <p><strong>Time Spent:</strong>  {timeSpent}</p>
-    <p><strong>End Date:</strong> {task.endDate}</p>
-    <p><strong>Priority:</strong> {task.priority}</p>
-    <p><strong>Attachments:</strong> {task.attachments.join(', ')}</p>
-    <p><strong>Status:</strong> {task.status}</p>
+            <p><strong>End Date:</strong> {task.endDate}</p>
+            <p><strong>Priority:</strong> {task.priority}</p>
+            <p><strong>Attachments:</strong> {task.attachments.join(', ')}</p>
+            <p><strong>Status:</strong> {task.status}</p>
 
+            <Comments task={task}/>
 
             <button onClick={closePopupInfoTodo}>Close</button>
           </div>
