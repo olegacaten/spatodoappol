@@ -144,7 +144,7 @@ const ProjectPage = () => {
       <div
     className="buffer-zone"
     style={{ height: '20px' }} // Increase the height to create a buffer zone
-  > </div>
+  ></div>
         <h3>QUEUE:</h3>
         <div className="project-page__pillar project-page__queue">
           <Reorder.Group
@@ -193,11 +193,6 @@ const ProjectPage = () => {
             </AnimatePresence>
           </Reorder.Group>
         </div>
-
-        <div
-    className="buffer-zone"
-    style={{ height: '20px' }} // Increase the height to create a buffer zone
-  ></div>
         <h3>DEVELOPMENT:</h3>
         <div className="project-page__pillar project-page__development">
           <Reorder.Group
